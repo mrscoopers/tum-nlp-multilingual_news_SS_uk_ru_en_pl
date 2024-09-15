@@ -1,0 +1,356 @@
+{
+  "view": {
+    "items": [
+      {
+        "type": "view.alert",
+        "theme": "danger",
+        "content": {
+          "type": "view.text",
+          "content": "У процесі розмітки новин ви можете зіткнутися з сенситивними або тривожними темами, оскільки новини рідко бувають нейтральними. Якщо ви відчуваєте, що не готові працювати з такими матеріалами, будь ласка, утримайтеся від участі в цьому проєкті."
+        }
+      },
+      {
+        "type": "view.alert",
+        "theme": "info",
+        "content": {
+          "type": "view.text",
+          "content": "Перед виконанням завдання прочитайте уважно інструкцію"
+        }
+      },
+      {
+        "items": [
+          {
+            "items": [
+              {
+                "type": "view.markdown",
+                "content": "### Новина №1"
+              },
+              {
+                "type": "view.link",
+                "url": {
+                  "type": "data.input",
+                  "path": "source1"
+                },
+                "label": "Перегляньте побіжно оригінал опублікованої новини, це важливо для коректного порівняння новин",
+                "content": "Посилання на сайт новини",
+                "validation": {
+                  "type": "condition.link-opened",
+                  "hint": "Перейдіть на сайт новини, так буде зручно перевірити дату виходу статті",
+                  "url": {
+                    "type": "data.input",
+                    "path": "source1"
+                  }
+                }
+              },
+              {
+                "type": "view.collapse",
+                "label": "Повний текст новини",
+                "content": {
+                  "type": "view.text",
+                  "content": {
+                    "type": "data.input",
+                    "path": "text1"
+                  }
+                }
+              },
+              {
+                "type": "view.markdown",
+                "content": "**Перший варіант сумаризації**"
+              },
+              {
+                "type": "view.text",
+                "content": {
+                  "type": "data.input",
+                  "path": "summ_text1"
+                }
+              },
+              {
+                "type": "view.markdown",
+                "content": "**Другий варіант сумаризації**"
+              },
+              {
+                "type": "view.text",
+                "content": {
+                  "type": "data.input",
+                  "path": "summ_with_documents_text1"
+                }
+              }
+            ],
+            "type": "view.list"
+          },
+          {
+            "items": [
+              {
+                "type": "view.markdown",
+                "content": "### Новина №2"
+              },
+              {
+                "type": "view.link",
+                "label": "Перегляньте побіжно оригінал опублікованої новини, це важливо для коректного порівняння новин",
+                "url": {
+                  "type": "data.input",
+                  "path": "source2"
+                },
+                "content": "Посилання на сайт новини",
+                "validation": {
+                  "type": "condition.link-opened",
+                  "hint": "Перейдіть на сайт новини, так буде зручно перевірити дату виходу статті",
+                  "url": {
+                    "type": "data.input",
+                    "path": "source2"
+                  }
+                }
+              },
+              {
+                "type": "view.collapse",
+                "label": "Повний текст новини",
+                "content": {
+                  "type": "view.text",
+                  "content": {
+                    "type": "data.input",
+                    "path": "text2"
+                  }
+                }
+              },
+              {
+                "type": "view.markdown",
+                "content": "**Перший варіант сумаризації**"
+              },
+              {
+                "type": "view.text",
+                "content": {
+                  "type": "data.input",
+                  "path": "summ_text2"
+                }
+              },
+              {
+                "type": "view.markdown",
+                "content": "**Другий варіант сумаризації**"
+              },
+              {
+                "type": "view.text",
+                "content": {
+                  "type": "data.input",
+                  "path": "summ_with_documents_text2"
+                }
+              }
+            ],
+            "type": "view.list"
+          }
+        ],
+        "type": "layout.columns"
+      },
+      {
+        "type": "view.divider"
+      },
+      {
+        "type": "view.markdown",
+        "content": "#### Як між собою співвідносяться ці дві новини?"
+      },
+      {
+        "type": "view.markdown",
+        "content": "**Чи збігаються головні дійові особи новин? (ХТО)**"
+      },
+      {
+        "type": "field.button-radio-group",
+        "options": [
+          {
+            "label": "У точності",
+            "value": "yes",
+            "hint": "Одна людина/група людей"
+          },
+          {
+            "label": "Частково (є перетини)",
+            "value": "partly",
+            "hint": "Одну або кілька дійових осіб згадано в обох статтях"
+          },
+          {
+            "label": "Ні",
+            "value": "no",
+            "hint": "Жодної спільної дійової особи"
+          },
+          {
+            "label": "У хоча б однієї статті немає дійових осіб",
+            "value": "incomparable",
+            "hint": "З хоча б однієї статті неможливо зрозуміти дійову особу, наприклад, це погодне зведення або гороскоп"
+          }
+        ],
+        "data": {
+          "type": "data.internal",
+          "path": "result.who_same",
+          "default": {
+            "type": "data.input",
+            "path": "result.who_same"
+          }
+        },
+        "disabled": true
+      },
+      {
+        "type": "view.text",
+        "content": {
+          "type": "data.input",
+          "path": "explanation_who"
+        },
+        "label": "Пояснення"
+      },
+      {
+        "type": "view.markdown",
+        "content": "**Чи збігаються місця, в яких відбуваються події з новин? (ДЕ)**"
+      },
+      {
+        "type": "field.button-radio-group",
+        "options": [
+          {
+            "label": "У точності",
+            "value": "yes",
+            "hint": "Йдеться про одну й ту саму локацію в точності"
+          },
+          {
+            "label": "Частково (є перетини)",
+            "value": "partly",
+            "hint": "Наприклад, в одній статті вказана тільки країна, а в іншій - місто в межах цієї країни. Або ж у статтях зазначено кілька локацій, і частина з них збігається."
+          },
+          {
+            "label": "Ні",
+            "value": "no",
+            "hint": "Йдеться про різні місця, або міста, або країни"
+          },
+          {
+            "label": "Хоча б в одній статті місце подій зовсім не вказано",
+            "value": "incomparable",
+            "hint": "З хоча б однієї зі статей взагалі не можна зрозуміти або здогадатися про місце, де відбувалися події"
+          }
+        ],
+        "data": {
+          "type": "data.internal",
+          "path": "result.where_same",
+          "default": {
+            "type": "data.input",
+            "path": "result.where_same"
+          }
+        },
+        "disabled": true
+      },
+      {
+        "type": "view.text",
+        "content": {
+          "type": "data.input",
+          "path": "explanation_where"
+        },
+        "label": "Пояснення"
+      },
+      {
+        "type": "view.markdown",
+        "content": "**Чи збігається час подій, що відбуваються в новинах? (КОЛИ)**"
+      },
+      {
+        "type": "field.button-radio-group",
+        "options": [
+          {
+            "label": "Одна й та сама подія за часом",
+            "value": "yes",
+            "hint": "Йдеться про час події, не написання статті"
+          },
+          {
+            "label": "У межах одного місяця",
+            "value": "partly",
+            "hint": "Йдеться про час події, не написання статті"
+          },
+          {
+            "label": "Різниця, більше ніж місяць",
+            "value": "no",
+            "hint": "Йдеться про час події, не написання статті"
+          },
+          {
+            "label": "З хоча б однієї статті неможливо встановити час події ",
+            "value": "incomparable",
+            "hint": "Йдеться про час події, не написання статті"
+          }
+        ],
+        "data": {
+          "type": "data.internal",
+          "path": "result.when_same",
+          "default": {
+            "type": "data.input",
+            "path": "result.when_same"
+          }
+        },
+        "disabled": true
+      },
+      {
+        "type": "view.text",
+        "content": {
+          "type": "data.input",
+          "path": "explanation_when"
+        },
+        "label": "Пояснення"
+      },
+      {
+        "type": "view.markdown",
+        "content": "**Як співвідносяться теми/події новин? (ЩО)**"
+      },
+      {
+        "data": {
+          "path": "main_result",
+          "type": "data.internal",
+          "default": {
+            "path": "main_result",
+            "type": "data.input"
+          }
+        },
+        "options": [
+          {
+            "value": "similar",
+            "label": "Однакові",
+            "hint": "Йдеться про одну й ту саму подію"
+          },
+          {
+            "value": "somewhat_related",
+            "label": "Загальна конкретна тема",
+            "hint": "Новини в межах однієї події/одної конкретної теми, наприклад, новини про лісові пожежі на Луганщині у 2020 або введення комендантської години через covid-19 у різних країнах"
+          },
+          {
+            "value": "different",
+            "label": "Різні",
+            "hint": "Події зовсім різні або тема, що їх об'єднує, занадто неконкретна, часта для новин (covid-19, вибори та інше)"
+          }
+        ],
+        "type": "field.button-radio-group",
+        "disabled": true
+      },
+      {
+        "type": "view.text",
+        "label": "Як треба буде написати коментар до вибору «Різні»/«Загальна конкретна тема/загальна подія»/«Однакові»:",
+        "content": {
+          "type": "data.input",
+          "path": "comment"
+        }
+      },
+      {
+        "type": "view.text",
+        "content": {
+          "type": "data.input",
+          "path": "explanation_what"
+        },
+        "label": "Пояснення"
+      },
+      {
+        "type": "view.divider"
+      },
+      {
+        "type": "field.checkbox",
+        "label": "Приклад мені зрозумілий",
+        "data": {
+          "type": "data.output",
+          "path": "understood"
+        },
+        "preserveFalse": true,
+        "validation": {
+          "type": "condition.required"
+        }
+      }
+    ],
+    "type": "view.list"
+  },
+  "plugins": []
+}
